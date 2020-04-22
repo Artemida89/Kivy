@@ -54,8 +54,6 @@ class CalcApp(App):
         # GridLayout - клавиатура в 4 колонки и 3 растояние между кнопак
         gl = GridLayout(cols=4, spacing=3, size_hint=(1, .6))
 
-        gl.add_widget(Button(text="Проба №,1,"))
-
         # Вывод результата Калькулятора Размер и прочее
         self.bll = Label(text="0", font_size=50, halign="right", valign="center", size_hint=(1, .4),
                          text_size=(480 - 40, 640 * .4 - 40))
