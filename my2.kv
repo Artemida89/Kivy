@@ -1,0 +1,60 @@
+<CustomLabel@Label>:
+    text_size: self.size
+    valign: "middle"
+    padding_x: 5
+
+<SingleLineTextInput@TextInput>:
+    multiline: False
+
+<GreenButton@Button>:
+    background_color: 1, 1, 0, 1
+    size_hint_y: None
+    height: self.parent.height * 0.120
+
+UserGroup
+
+    male: chk_male
+    female: chk_female
+    age: txt_age
+
+    GridLayout:
+        cols: 2
+        padding : 30,30
+        spacing: 20, 20
+        row_default_height: '30dp'
+
+        Label:
+            text: 'Male'
+            text_size: self.size
+            valign: 'middle'
+
+        CheckBox:
+            group: 'check'
+            id : chk_male
+
+        Label:
+            text: 'Female'
+            text_size: self.size
+            valign: 'middle'
+
+        CheckBox:
+            group: 'check'
+            id: chk_female
+
+        CustomLabel:
+            text: 'age'
+            text_size: self.size
+            valign: 'middle'
+
+        SingleLineTextInput:
+            id: txt_age
+
+
+        GreenButton:
+            text: 'Ok'
+            on_press: root.insert_data()
+
+
+        GreenButton:
+            text: 'Cancel'
+            on_press: app.stop()
