@@ -1,10 +1,4 @@
 from kivy.app import App
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from kivy.properties import ObjectProperty
-from kivy.core.window import Window
-from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.config import Config
 
