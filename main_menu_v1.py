@@ -7,8 +7,7 @@ from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import MDList
 
 KV = '''
-<ContentNavigationDrawer>:
-
+<Drawer>:
     orientation: "vertical"
     padding: "8dp"
     spacing: "8dp"
@@ -18,7 +17,7 @@ KV = '''
         anchor_x: "left"
         size_hint_y: None
         height: avatar.height
-        
+
         # логотип
         Image:
             id: avatar
@@ -31,36 +30,28 @@ KV = '''
         size_hint_y: None
         height: self.texture_size[1]
 
-    MDLabel:
-        text: "sales@aluminica.com"
-        font_style: "Caption"
-        size_hint_y: None
-        height: self.texture_size[1]
-        
-    MDLabel:
-        text: "www.aluminica.com"
-        font_style: "Caption"
-        size_hint_y: None
-        height: self.texture_size[1]
-
     # ТО ЧТО БУДЕТ Скролить
     ScrollView:
-        
+
         # Список меню
         MDList:
-            
+
             # Меню №1
             OneLineListItem:
-                text: "Screen 1"
+                text: "Меню 1"
                 on_press:
+                    # Закрытие Меню
                     root.nav_drawer.set_state("close")
+                    # Открытие содержимого меню № 1
                     root.screen_manager.current = "scr 1"
-                    
+
             # Меню №2
             OneLineListItem:
-                text: "Screen 2"
+                text: "Меню 2"
                 on_press:
+                    # Закрытие Меню
                     root.nav_drawer.set_state("close")
+                    # Открытие содержимого меню № 2
                     root.screen_manager.current = "scr 2"
 
 
@@ -71,7 +62,7 @@ Screen:
         id: toolbar
         pos_hint: {"top": 1}
         elevation: 10
-        title: "MDNavigationDrawer"
+        title: "Меню"
         left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
 
     NavigationLayout:
@@ -79,39 +70,62 @@ Screen:
 
         ScreenManager:
             id: screen_manager
-
+            
             Screen:
+                # Данные меню №1 id = "scr 1"
                 name: "scr 1"
 
+                
                 MDLabel:
                     text: "Screen 1"
                     halign: "center"
-
+                    
+                Button:
+                    id: Button1
+                    text: "Данные получить"
+                    on_press:
+                        # Открытие содержимого № 3
+                        screen_manager.current = "scr 3"
+                    
             Screen:
+                # Данные меню №1 id = "scr 2"
                 name: "scr 2"
 
                 MDLabel:
                     text: "Screen 2"
                     halign: "center"
+                    
+            
+            Screen:
+                id: proba
+                # Данные id = "scr 3"
+                name: "scr 3"
 
+                MDLabel:
+                    text: "Данные получены"
+                    halign: "center"
+                    
+            
         MDNavigationDrawer:
             id: nav_drawer
 
-            ContentNavigationDrawer:
+            Drawer:
                 screen_manager: screen_manager
                 nav_drawer: nav_drawer
+                
+                
+
 '''
 
 
-class ContentNavigationDrawer(BoxLayout):
+class Drawer(BoxLayout):
     screen_manager = ObjectProperty()
     nav_drawer = ObjectProperty()
 
 
-
-class TestNavigationDrawer(MDApp):
+class Main1(MDApp):
     def build(self):
         return Builder.load_string(KV)
 
 
-TestNavigationDrawer().run()
+Main1().run()

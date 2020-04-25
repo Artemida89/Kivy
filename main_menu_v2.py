@@ -13,7 +13,7 @@ KV = '''
     padding: "8dp"
     spacing: "8dp"
     
-    #Верхняя часть
+#верхушка
     AnchorLayout:
         anchor_x: "left"
         size_hint_y: None
@@ -24,7 +24,7 @@ KV = '''
             id: avatar
             source: "kivymd_logo.png"
 
-    # Данные Список текстов
+    # Данные
     MDLabel:
         text: "АлюминикА"
         font_style: "Button"
@@ -43,20 +43,16 @@ KV = '''
         size_hint_y: None
         height: self.texture_size[1]
 
-    # ТО ЧТО БУДЕТ Скролить
     ScrollView:
-        
-        # Список меню
+
         MDList:
-            
-            # Меню №1
+
             OneLineListItem:
                 text: "Screen 1"
                 on_press:
                     root.nav_drawer.set_state("close")
                     root.screen_manager.current = "scr 1"
-                    
-            # Меню №2
+
             OneLineListItem:
                 text: "Screen 2"
                 on_press:
@@ -64,9 +60,8 @@ KV = '''
                     root.screen_manager.current = "scr 2"
 
 
-# Сам экран
 Screen:
-    # Панель меню
+
     MDToolbar:
         id: toolbar
         pos_hint: {"top": 1}
